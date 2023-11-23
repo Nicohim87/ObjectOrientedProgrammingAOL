@@ -31,7 +31,6 @@ class gamer extends Manusia{
         }
         System.out.println("Status  : " +hasil);
     }
-
 }
 
 public class coba{

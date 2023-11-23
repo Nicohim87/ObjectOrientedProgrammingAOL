@@ -37,6 +37,7 @@ public class coba{
     public static void main(String[] args){
         System.out.println("Odit Pro Player Dota 2 tapi bo'ong");
     gamer data = new gamer("Liu", "Malang", 99, "bronze");
+    System.out.println("Davin Wibu Akut");
     data.display();
     }
 }

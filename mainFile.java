@@ -105,10 +105,12 @@ class Tanggal{
     private int jam;
     private int menit;
 
-    void setTanggal(int tahun, int bulan, int hari){
+    void setTanggal(int tahun, int bulan, int hari, int jam, int menit){
         this.tahun = tahun;
         this.bulan = bulan;
         this.hari = hari;
+        this.jam = jam;
+        this.menit = menit;
     }
 
     void printTanggal(){

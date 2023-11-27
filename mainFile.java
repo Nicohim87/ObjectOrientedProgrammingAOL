@@ -45,8 +45,14 @@ class Barang{
     void increaseJumlah(int amt){
         this.jumlah += amt;
     }
+    void increaseJumlah(){
+        this.jumlah++;
+    }
     void reduceJumlah(int amt){
         this.jumlah -= amt;
+    }
+    void reduceJumlah(){
+        this.jumlah--;
     }
 
     void setHarga(double harga){

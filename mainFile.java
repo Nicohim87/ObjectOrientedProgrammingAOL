@@ -165,7 +165,24 @@ public class mainFile{
                 // Function Transaksi    
                     break;
                 case 2:
-                // Function Ubah Stok
+                // Function Ubah Stok 
+                
+                /*
+                Display barang dan jumlah
+                Print "barang apa yang ingin diubah : "
+                print "input kode barang" 
+                kalo ketemu temp = 1, kalo nggak 0,
+                ganti stok
+                end
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                 
+                 */
                     break;
                 case 3:
                 // Function Cek data obat

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class koneksi {
     private static Connection koneksi;
     
-    public static Connection getKoneksi()
+    public static Connection getConnection()
     {
         if (koneksi == null)
         {
@@ -21,7 +21,7 @@ public class koneksi {
                 String user = "root";
                 String password = "";
                 
-                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+                DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
                 koneksi = DriverManager.getConnection(url, user, password);
                 System.out.println("Berhasil");
             }

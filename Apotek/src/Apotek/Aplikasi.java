@@ -6,6 +6,7 @@ package Apotek;
 
 import java.awt.HeadlessException;
 import java.sql.Connection;
+
 import javax.swing.table.DefaultTableModel;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -40,7 +41,7 @@ public class Aplikasi extends javax.swing.JFrame {
         try{
             int no = 1;
             String sql = "SELECT * FROM data_item";
-            java.sql.Connection conn = (Connection)koneksi.getKoneksi();
+            java.sql.Connection conn = (Connection) koneksi.getConnection();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
             
@@ -346,7 +347,7 @@ public class Aplikasi extends javax.swing.JFrame {
         {
             String sql = "INSERT INTO data_item (id_item, nama_item, kategori_item, stok, harga_item) " +
 "VALUES('" + txtId.getText() + "'," + "'" + txtNama.getText() + "'," + "'" + cbKategori.getSelectedItem() + "'," + "'" + txtStok.getText() + "'," + "'" + txtHarga.getText() + "')";
-            java.sql.Connection conn = (Connection) koneksi.getKoneksi();
+            java.sql.Connection conn = (Connection) koneksi.getConnection();
             java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.execute();
             JOptionPane.showMessageDialog(null, "Proses Simpan Data Berhasil...");
@@ -382,7 +383,7 @@ public class Aplikasi extends javax.swing.JFrame {
         try
         {
             String sql = "UPDATE data_item SET id_item = '" + txtId.getText() + "', nama_item = " + "'" + txtNama.getText() + "'," + "kategori_item = '" + cbKategori.getSelectedItem() + "', stok = " + txtStok.getText() + ", " + "harga_item = " + txtHarga.getText() + " WHERE id_item = '" + txtId.getText() + "'";
-            java.sql.Connection conn = (Connection) koneksi.getKoneksi();
+            java.sql.Connection conn = (Connection) koneksi.getConnection();
             java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.execute();
             JOptionPane.showMessageDialog(null, "Edit Data Berhasil...");
@@ -400,7 +401,7 @@ public class Aplikasi extends javax.swing.JFrame {
         try
         {
             String sql = "DELETE FROM data_item WHERE id_item = '" + txtId.getText() + "'";
-            java.sql.Connection conn = (Connection) koneksi.getKoneksi();
+            java.sql.Connection conn = (Connection) koneksi.getConnection();
             java.sql.PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.execute();
             JOptionPane.showMessageDialog(null, "Hapus Data Berhasil...");
@@ -421,7 +422,7 @@ public class Aplikasi extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void mainMenu(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

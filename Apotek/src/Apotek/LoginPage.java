@@ -382,13 +382,10 @@ public class LoginPage extends javax.swing.JFrame {
 
             // Check if the result set has any rows
             if (data.next()) {
-                System.out.println(data.getString("status"));
                 if(data.getString("status").equals("1")){
                     // Compare the stored password with the entered password
                     if (data.getString("pass").equals(new String(jPasswordField4.getPassword()))) {
-                        System.out.println(data.getString("pass"));
                         createAcc();
-                        System.out.println("done");
 
 
                     } else {

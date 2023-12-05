@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2023 at 06:42 PM
+-- Generation Time: Dec 05, 2023 at 05:40 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -51,6 +51,28 @@ INSERT INTO `data_item` (`id_item`, `nama_item`, `kategori_item`, `stok`, `harga
 ('ITM009', 'Implan Kontrasepsi', 'Implan', 10, 500000),
 ('ITM010', 'Nitroglycerin Tablet Bukal', 'Implan', 40, 35000);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userdata`
+--
+
+CREATE TABLE `userdata` (
+  `username` varchar(30) NOT NULL,
+  `pass` varchar(30) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `lastLogin` datetime NOT NULL,
+  `status` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `userdata`
+--
+
+INSERT INTO `userdata` (`username`, `pass`, `name`, `lastLogin`, `status`) VALUES
+('admin', 'admin123', 'admin', '2023-12-04 15:50:35', 1),
+('user123', 'user123', 'user123', '2023-12-05 11:38:19', 0);
+
 --
 -- Indexes for dumped tables
 --
@@ -60,6 +82,12 @@ INSERT INTO `data_item` (`id_item`, `nama_item`, `kategori_item`, `stok`, `harga
 --
 ALTER TABLE `data_item`
   ADD PRIMARY KEY (`id_item`);
+
+--
+-- Indexes for table `userdata`
+--
+ALTER TABLE `userdata`
+  ADD PRIMARY KEY (`username`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -10,13 +10,71 @@ import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
+import javax.swing.table.TableColumnModel;
 /**
  *
  * @author oditr
  */
 public class Aplikasi extends javax.swing.JFrame {
-
+    
+    private void setColumnWidth() {
+        TableColumnModel columnModel = tabelObat.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(30);
+        columnModel.getColumn(0).setMaxWidth(30);
+        columnModel.getColumn(0).setMinWidth(30);
+        
+        columnModel.getColumn(1).setPreferredWidth(60);
+        columnModel.getColumn(1).setMaxWidth(60);
+        columnModel.getColumn(1).setMinWidth(60);
+        
+        columnModel.getColumn(2).setPreferredWidth(170);
+        columnModel.getColumn(2).setMaxWidth(170);
+        columnModel.getColumn(2).setMinWidth(170);
+        
+        columnModel.getColumn(3).setPreferredWidth(90);
+        columnModel.getColumn(3).setMaxWidth(90);
+        columnModel.getColumn(3).setMinWidth(90);
+        
+        columnModel.getColumn(4).setPreferredWidth(50);
+        columnModel.getColumn(4).setMaxWidth(50);
+        columnModel.getColumn(4).setMinWidth(50);
+        
+        columnModel.getColumn(5).setPreferredWidth(100);
+        columnModel.getColumn(5).setMaxWidth(100);
+        columnModel.getColumn(5).setMinWidth(100);
+    }
+    
+    private void cari()
+    {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("No.");
+        model.addColumn("ID Item");
+        model.addColumn("Nama Item");
+        model.addColumn("Kategori Item");
+        model.addColumn("Stok");
+        model.addColumn("Harga Item");
+        
+        try
+        {
+            int no = 1;
+            String sql = "SELECT * FROM data_item WHERE id_item = '" + txtCari.getText() + "';" ;
+            java.sql.Connection conn = (Connection)koneksi.getConnection();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            
+            while(res.next())
+            {
+                model.addRow(new Object[]{no++, res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5)});
+                
+            }
+            tabelObat.setModel(model);
+            setColumnWidth();
+        } catch (Exception e)
+        {
+            System.out.println("Error : " + e.getMessage());
+        }
+    }
+    
     private void kosongkan_form()
     {
         txtId.setEditable(true);
@@ -51,6 +109,7 @@ public class Aplikasi extends javax.swing.JFrame {
                 
             }
             tabelObat.setModel(model);
+            setColumnWidth();
         }catch (SQLException e)
         {
             System.out.println("Error : " + e.getMessage());
@@ -89,12 +148,14 @@ public class Aplikasi extends javax.swing.JFrame {
         txtHarga = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelObat = new javax.swing.JTable();
-        tbTambah = new javax.swing.JButton();
+        tbLihat = new javax.swing.JButton();
         tbSimpan = new javax.swing.JButton();
         tbEdit = new javax.swing.JButton();
         tbHapus = new javax.swing.JButton();
         tbBatal = new javax.swing.JButton();
         tbKeluar = new javax.swing.JButton();
+        tbCari = new javax.swing.JButton();
+        txtCari = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,10 +255,15 @@ public class Aplikasi extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabelObat);
 
-        tbTambah.setText("Tambah Data");
-        tbTambah.addActionListener(new java.awt.event.ActionListener() {
+        tbLihat.setText("Lihat Data");
+        tbLihat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbLihatMouseClicked(evt);
+            }
+        });
+        tbLihat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbTambahActionPerformed(evt);
+                tbLihatActionPerformed(evt);
             }
         });
 
@@ -236,6 +302,19 @@ public class Aplikasi extends javax.swing.JFrame {
             }
         });
 
+        tbCari.setText("Cari ID Item");
+        tbCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbCariActionPerformed(evt);
+            }
+        });
+
+        txtCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCariActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -243,21 +322,9 @@ public class Aplikasi extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tbTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tbSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tbEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tbHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tbBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tbKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                         .addComponent(judulApp)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelNama, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,7 +338,25 @@ public class Aplikasi extends javax.swing.JFrame {
                             .addComponent(txtNama)
                             .addComponent(cbKategori, 0, 341, Short.MAX_VALUE)
                             .addComponent(txtStok)
-                            .addComponent(txtHarga))))
+                            .addComponent(txtHarga)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tbLihat, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tbSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tbEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tbCari))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tbHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tbBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tbKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -301,15 +386,19 @@ public class Aplikasi extends javax.swing.JFrame {
                     .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tbTambah)
+                    .addComponent(tbLihat)
                     .addComponent(tbSimpan)
                     .addComponent(tbEdit)
                     .addComponent(tbHapus)
                     .addComponent(tbBatal)
                     .addComponent(tbKeluar))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tbCari, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -331,10 +420,10 @@ public class Aplikasi extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHargaActionPerformed
 
-    private void tbTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbTambahActionPerformed
+    private void tbLihatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbLihatActionPerformed
         // TODO add your handling code here:
-        kosongkan_form();
-    }//GEN-LAST:event_tbTambahActionPerformed
+        tampilkan_data();
+    }//GEN-LAST:event_tbLihatActionPerformed
 
     private void tbKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbKeluarActionPerformed
         // TODO add your handling code here:
@@ -419,6 +508,19 @@ public class Aplikasi extends javax.swing.JFrame {
         kosongkan_form();
     }//GEN-LAST:event_tbBatalActionPerformed
 
+    private void tbCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbCariActionPerformed
+        // TODO add your handling code here:
+        cari();
+    }//GEN-LAST:event_tbCariActionPerformed
+
+    private void txtCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCariActionPerformed
+
+    private void tbLihatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbLihatMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbLihatMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -467,11 +569,13 @@ public class Aplikasi extends javax.swing.JFrame {
     private javax.swing.JLabel labelStok;
     private javax.swing.JTable tabelObat;
     private javax.swing.JButton tbBatal;
+    private javax.swing.JButton tbCari;
     private javax.swing.JButton tbEdit;
     private javax.swing.JButton tbHapus;
     private javax.swing.JButton tbKeluar;
+    private javax.swing.JButton tbLihat;
     private javax.swing.JButton tbSimpan;
-    private javax.swing.JButton tbTambah;
+    private javax.swing.JTextField txtCari;
     private javax.swing.JTextField txtHarga;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNama;

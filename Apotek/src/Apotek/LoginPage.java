@@ -465,6 +465,7 @@ public class LoginPage extends javax.swing.JFrame {
             jPasswordField2.setText("");
             jPasswordField3.setText("");
             jPasswordField4.setText("");
+            jLabel10.setText("");
                         
             jLabel16.setText("Create Account Success!");
         } catch (SQLException f){
@@ -472,9 +473,32 @@ public class LoginPage extends javax.swing.JFrame {
         }
     }
     
+    private boolean verify(){
+    
+        if (jTextPane2.getText().isEmpty()){
+            jLabel10.setText("Please insert name!");
+            return false;
+        } else if (jTextPane3.getText().isEmpty()){
+            jLabel10.setText("Please insert Username!");
+            return false;
+        }
+        else if (new String(jPasswordField2.getPassword()).isEmpty()){
+            jLabel10.setText("Please insert Password!");
+            return false;
+        }
+        
+        else if (!new String(jPasswordField3.getPassword()).equals(new String(jPasswordField2.getPassword()))){
+            jLabel10.setText("Password didnt match!");
+            return false;
+        }
+        else return true;
+        
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         // -- Verification
+        if(!verify()) return;
         String sql = "SELECT username FROM userData WHERE username = ?";
         try {
             java.sql.Connection conn = (Connection) koneksi.getConnection();

@@ -187,13 +187,17 @@ public class Aplikasi extends javax.swing.JFrame {
     /**
      * Creates new form Aplikasi
      */
-    public Aplikasi() {
-        initComponents();
+    private void refresh(){
         tampilkan_data();
-        kosongkan_form();
         getSumStok();
         getSumHarga();
         getSumModal();
+    }
+    
+    public Aplikasi() {
+        initComponents();
+        kosongkan_form();
+        refresh();
     }
 
     /**
@@ -546,10 +550,11 @@ public class Aplikasi extends javax.swing.JFrame {
     private void txtHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHargaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHargaActionPerformed
-
+    
+    
     private void tbLihatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbLihatActionPerformed
         // TODO add your handling code here:
-        tampilkan_data();
+        refresh();
     }//GEN-LAST:event_tbLihatActionPerformed
 
     private void tbKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbKeluarActionPerformed
@@ -573,6 +578,7 @@ public class Aplikasi extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+        refresh();
     }//GEN-LAST:event_tbSimpanActionPerformed
 
     private void tabelObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelObatMouseClicked
@@ -610,6 +616,7 @@ public class Aplikasi extends javax.swing.JFrame {
         }
         tampilkan_data();
         kosongkan_form();
+        refresh();
     }//GEN-LAST:event_tbEditActionPerformed
 
     private void tbHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbHapusActionPerformed
@@ -627,7 +634,7 @@ public class Aplikasi extends javax.swing.JFrame {
         }
         tampilkan_data();
         kosongkan_form();
-        
+        refresh();
     }//GEN-LAST:event_tbHapusActionPerformed
 
     private void tbBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbBatalActionPerformed
@@ -652,7 +659,7 @@ public class Aplikasi extends javax.swing.JFrame {
     SortData();   // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
+    /**`
      * @param args the command line arguments
      */
     public static void mainMenu(String args[]) {

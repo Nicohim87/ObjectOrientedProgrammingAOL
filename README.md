@@ -1,4 +1,10 @@
 # ObjectOrientedProgrammingAOL
+<h3>Anggota : </h3>
+Davin Nayaka Pandya / 2602163336<br>
+Nico Himawan / 2602060722<br>
+Oditya Ridho Darmanto / 2602217225<br>
+Steven Liu Sentiko / 2602081235<br>
+
 <h3>
 <b>Tema :</b> Kesehatan<br>
 <b>Judul:</b> Apotek<br>

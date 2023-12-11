@@ -11,6 +11,8 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumnModel;
+
+import java.text.DecimalFormat;
 /**
  *
  * @author oditr
@@ -26,33 +28,35 @@ public class Aplikasi extends javax.swing.JFrame {
             sum = (double)(sum+Double.parseDouble(tabelObat.getValueAt((int)i,4).toString()));
             
         }
-        labelSumStok.setText(Double.toString((double)sum).toString());
+        labelSumStok.setText(Double.toString((double)sum));
         
     }
     
     private void getSumHarga()
     {
         double sum = 0;
-        
+        DecimalFormat formatting = new DecimalFormat("0");
+        formatting.applyPattern("#,##  #,###.00");
         for(double i = 0; i<tabelObat.getRowCount(); i++)
         {
             sum = (double)(sum+Double.parseDouble(tabelObat.getValueAt((int)i,5).toString()));
             
         }
-        labelSumHarga.setText(Double.toString((double)sum).toString());
+        labelSumHarga.setText(formatting.format(sum));
         
     }
     
     private void getSumModal()
     {
         double sum = 0;
-        
+        DecimalFormat formatting = new DecimalFormat("0");
+        formatting.applyPattern("#,###,###.00");
         for(double i = 0; i<tabelObat.getRowCount(); i++)
         {
             sum = (double)(sum +(Double.parseDouble(tabelObat.getValueAt((int)i,4).toString()) * Double.parseDouble(tabelObat.getValueAt((int)i,5).toString())));
             
         }
-        labelSumModal.setText(Double.toString((double)sum).toString());
+        labelSumModal.setText(formatting.format(sum));
     }
     
     private void setColumnWidth() {

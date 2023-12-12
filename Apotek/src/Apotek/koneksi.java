@@ -27,7 +27,7 @@ public class koneksi {
             }
             catch (Exception e)
             {
-                System.out.println("Koneksi ke Database Gagal" + e.getMessage());
+                System.out.println("Koneksi ke Database Gagal : " + e.getMessage());
             }
         }
         return koneksi;

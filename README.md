@@ -1,4 +1,6 @@
 # ObjectOrientedProgrammingAOL
+
+![Poster](./Poster.png)
 <h3>
 <b>Tema :</b> Kesehatan<br>
 <b>Judul:</b> Apotek<br>

@@ -31,4 +31,4 @@ Steven Liu Sentiko / 2602081235<br>
     -  Password
     -  Nama
     -  Status (Admin atau tidak)
-    -  Login Terakhir
+    -  Tanggal Dibuat

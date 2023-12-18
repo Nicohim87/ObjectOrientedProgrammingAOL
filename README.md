@@ -1,8 +1,4 @@
 # Assurance of Learning - Object Oriented Programming
-![Poster](./Poster.png)
-
-<b>User Manual:</b> https://youtu.be/Dh8fxxjL3Ug <br>
-
 
 <h3><b>Anggota : </b></h3>
 Davin Nayaka Pandya / 2602163336<br>
@@ -10,6 +6,9 @@ Nico Himawan / 2602060722<br>
 Oditya Ridho Darmanto / 2602217225<br>
 Steven Liu Sentiko / 2602081235<br>
 
+<br><b>User Manual:</b> https://youtu.be/Dh8fxxjL3Ug <br>
+
+![Poster](./Poster.png)
 
 <h3>
 <b>Tema :</b> Kesehatan<br>

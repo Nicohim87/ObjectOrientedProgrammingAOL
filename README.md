@@ -6,7 +6,10 @@ Nico Himawan / 2602060722<br>
 Oditya Ridho Darmanto / 2602217225<br>
 Steven Liu Sentiko / 2602081235<br>
 
-<br><b>User Manual:</b> https://youtu.be/Dh8fxxjL3Ug <br>
+<br>
+<b>User Manual:</b> https://youtu.be/Dh8fxxjL3Ug <br>
+<b>Google Drive:</b> https://drive.google.com/drive/folders/17RH9421da5SBlmYXdqzZKBCXHXDvGW8d?usp=sharing<br>
+<br>
 
 ![Poster](./Poster.png)
 

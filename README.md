@@ -1,5 +1,8 @@
-# ObjectOrientedProgrammingAOL
+# Assurance of Learning - Object Oriented Programming
 ![Poster](./Poster.png)
+
+<b>User Manual:</b> https://youtu.be/Dh8fxxjL3Ug <br>
+
 
 <h3><b>Anggota : </b></h3>
 Davin Nayaka Pandya / 2602163336<br>
@@ -14,6 +17,7 @@ Steven Liu Sentiko / 2602081235<br>
 <b>Fitur:</b>
 </h3>
 
+- Login dan Buat Akun
 - CRUD data Obat dan alat kesehatan
 - Penjualan (Update stock)
 
